@@ -1,6 +1,42 @@
+<div class="section">
+    <div class="container">
+        <div class="column is-two-fifths is-offset-one-quarter">     
+            <h2 class="title is-1">Select a Flight</h2>
+
+            <%=search_form_for @search, url: flights_path do |f|%>
+                Flight code:
+                <%=f.select :flight_code_eq, options_for_select(@flight_code_list), include_blank: true%> <br>
+                Flight date:
+                <%=f.select :departure_details_eq, options_for_select(@dates_for_flights), include_blank: true%> <br>
+                From:
+                <%= f.select :from_airport_id_eq, options_for_select(@airports), include_blank: true%> <br>
+                To:
+                <%= f.select :to_airport_id_eq, options_for_select(@airports), include_blank: true%> <br>
+                
+
+                <%= f.submit "Search"%>
+            <% end %>
+        
+           
+        </div>
+    </div>
+</div>
+
+
+
 <p>
-<% @flights.each do |flight|%>
-    <%=flight.flight_code%>
-    <% end %>
+<% if @flights.present? %>
+  
+    <% @flights.each do |flight|%>
+        Flight Code: <%=flight.flight_code%> <br>
+        departure: <%=flight.departure_details%> <br>
+        From: <%=flight.from_airport.airport_code%> <br>
+        TO: <%=flight.to_airport.airport_code%> <br>
+        <hr>
+        <% end %>
+<% end %>
 </p>
+
+
+<br>
 

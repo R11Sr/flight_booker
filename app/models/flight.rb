@@ -3,5 +3,4 @@ class Flight < ApplicationRecord
     belongs_to :to_airport, class_name: 'Airport'
     
 
-
 end

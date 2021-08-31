@@ -43,6 +43,9 @@ gem 'devise', '~> 4.8'
 #extension for Bulma, didn't use.
 gem 'bulma-extensions-rails'
 
+#for searching
+gem 'ransack', '~> 2.4', '>= 2.4.2'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
