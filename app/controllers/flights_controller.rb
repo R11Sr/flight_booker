@@ -7,11 +7,8 @@ class FlightsController < ApplicationController
 
         #implementation of the search
         @search =Flight.ransack(params[:q]) 
-        @flights = @search.result
-        if params[:q]
-        
-            # @flights = Flight.all
-        end
+        @flights = @search.result.order(departure_details: :asc)
+
     end
 
     def show

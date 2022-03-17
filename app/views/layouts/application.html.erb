@@ -41,21 +41,31 @@
           <div class="navbar-end">
           <%= link_to 'Home', root_path, class: "navbar-item is-active" %>
 
-            <a class="navbar-item">
-              Examples
-            </a>
-            <a class="navbar-item">
-              Documentation
-            </a>
-            <span class="navbar-item">
-              <a class="button is-info is-inverted">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
-                <span>Download</span>
+            <% if user_signed_in? %>
+              
+                <%= link_to "#{current_user.first_name}'s Info", edit_user_registration_path, class: 'navbar-item'%>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
+
+             
+              <% else %>
+                  <%= link_to 'Sign In', new_user_session_path, class: 'navbar-item' %>
+                  <%= link_to 'Sign Up', new_user_registration_path, class: 'navbar-item' %>
+
+
+              <a class="navbar-item">
+                Documentation
               </a>
-            </span>
-          </div>
+              <span class="navbar-item">
+                <a class="button is-info is-inverted">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Download</span>
+                </a>
+              </span>
+
+            </div>
+            <% end %>
         </div>
       </div>
     </nav>
